@@ -1,0 +1,8 @@
+public class BomDistiController {
+    public List<finalistobj__c> finalistList { get; set; }
+    
+    public BomDistiController() {
+        // Call the Helper method from BomDistiHelper class and assign the result to finalistList
+        finalistList = BomDistiHelper.Helper([SELECT  Bom_pn__c, bom_qty__c, disti_pn__c, disti_qty__c FROM BomDistiobj__c]);
+    }
+}
