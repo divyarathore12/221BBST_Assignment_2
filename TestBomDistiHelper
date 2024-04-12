@@ -1,0 +1,35 @@
+@isTest(seeAllData='true')
+public class TestBomDistiHelper {
+    
+    // Test method to compare the output of BomDistiHelper.Helper() method with expected results
+    @isTest
+    static void Compare_Lists_Test() {
+        // Start test execution
+        Test.startTest();
+        // Retrieve actual list using BomDistiHelper.Helper() method
+        List<finalistobj__c> ActualList = BomDistiHelper.Helper([SELECT Bom_pn__c, bom_qty__c, disti_pn__c, disti_qty__c FROM BomDistiobj__c]);
+        // Stop test execution
+        Test.stopTest();
+        
+        // Debugging output for test results
+        System.debug('test_Compare_Lists : Output');
+        System.debug('Bom PN | Bom Qty | Disti PN | Disti Qty | Error Flag');
+        for (finalistobj__c item : ActualList) {
+            System.debug(item.bomPartnumber__c  + ' | ' + item.bomqty__c + ' | ' + item.distiPartnumber__c + ' | ' + item.distiqty__c + ' | ' + item.errorFlag__c);
+        }
+        
+        // Assertion statements to verify the size and content of the actual list
+        System.assertEquals(11, ActualList.size());
+        System.assertEquals('ABCD', ActualList[0].bomPartnumber__c);
+        System.assertEquals(2, ActualList[0].bomqty__c);
+        System.assertEquals(null, ActualList[0].distiPartnumber__c);
+        System.assertEquals(null, ActualList[0].distiqty__c);
+        System.assertEquals(true, ActualList[0].errorFlag__c);
+        
+        System.assertEquals('ABC', ActualList[1].bomPartnumber__c);
+        System.assertEquals(2, ActualList[1].bomqty__c);
+        System.assertEquals('ABC', ActualList[1].distiPartnumber__c);
+        System.assertEquals(2, ActualList[1].distiqty__c);
+        System.assertEquals(false, ActualList[1].errorFlag__c);
+    }
+}
