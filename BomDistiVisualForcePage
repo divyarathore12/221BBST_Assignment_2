@@ -1,0 +1,18 @@
+<apex:page controller="BomDistiController">
+    <!-- Page block with the title "Unified List" -->
+    <apex:pageBlock title="Unified List">
+        <!-- Page block table to display the list of finalist objects -->
+        <apex:pageBlockTable value="{!finalistList}" var="item">
+            <!-- Column to display BoM Part Number -->
+            <apex:column headerValue="BoM Part Number" value="{!item.bomPartnumber__c}" />
+            <!-- Column to display BoM Quantity -->
+            <apex:column headerValue="BoM Quantity" value="{!item.bomqty__c}" />
+            <!-- Column to display Disti Part Number -->
+            <apex:column headerValue="Disti Part Number" value="{!item.distiPartnumber__c}" />
+            <!-- Column to display Disti Quantity -->
+            <apex:column headerValue="Disti Quantity" value="{!item.distiqty__c}" />
+            <!-- Column to display Error Flag -->
+            <apex:column headerValue="Error Flag" value="{!item.errorFlag__c}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
